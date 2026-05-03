@@ -59,7 +59,61 @@ export default defineConfig({
     ],
 
     search: {
-      provider: 'local'
+      provider: 'local',
+      options: {
+        miniSearch: {
+          /**
+           * @type {Pick<import('minisearch').Options, 'extractField' | 'tokenize' | 'processTerm'>}
+           */
+          options: {
+            translations: {
+              button: {
+                buttonText: '搜索',
+                buttonAriaLabel: '搜索'
+              },
+              modal: {
+                noResultsText: '无法找到相关结果',
+                resetButtonTitle: '清除搜索条件',
+                footer: {
+                  selectText: '选择',
+                  navigateText: '切换',
+                  closeText: '关闭'
+                }
+              }
+            },
+            miniSearch: {
+              options: {
+                // 设置搜索字段和权重
+                fields: ['title', 'text'],
+                boost: {title: 4, text: 2, titles: 1} // 标题权重更高
+              },
+              searchOptions: {
+                fuzzy: 0.2,     // 模糊匹配度 (0.0 - 1.0)
+                prefix: true    // 开启前缀搜索
+              }
+            },
+            async _render(src: any, env: {
+              frontmatter: { search: boolean };
+              relativePath: { startsWith: (arg0: string) => any }
+            }, md: { renderAsync: (arg0: any, arg1: any) => any }) {
+              const html = await md.renderAsync(src, env)
+              // 排除 frontmatter 中设置了 search: false 的页面
+              if (env.frontmatter?.search === false) return ''
+              // 排除某个特定目录下的所有页面
+              if (env.relativePath.startsWith('private/')) return ''
+              return html
+            }
+          },
+          /**
+           * @type {import('minisearch').SearchOptions}
+           * @default
+           * { fuzzy: 0.2, prefix: true, boost: { title: 4, text: 2, titles: 1 } }
+           */
+          searchOptions: {
+            /* ... */
+          }
+        }
+      }
     }
   },
 
