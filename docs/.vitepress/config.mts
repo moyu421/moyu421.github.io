@@ -55,8 +55,12 @@ export default defineConfig({
     // },
 
     socialLinks: [
-      {icon: 'github', link: 'https://github.com/vuejs/vitepress'}
+      {icon: 'github', link: 'https://github.com/moyu421/moyu421.github.io'}
     ],
+
+    search: {
+      provider: 'local'
+    }
   },
 
   // ------ Markdown 配置 ------
