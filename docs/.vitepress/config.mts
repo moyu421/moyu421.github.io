@@ -61,11 +61,8 @@ export default defineConfig({
     search: {
       provider: 'local',
       options: {
-        miniSearch: {
-          /**
-           * @type {Pick<import('minisearch').Options, 'extractField' | 'tokenize' | 'processTerm'>}
-           */
-          options: {
+        locales: {
+          zh: {
             translations: {
               button: {
                 buttonText: '搜索',
@@ -81,6 +78,13 @@ export default defineConfig({
                 }
               }
             },
+          }
+        },
+        miniSearch: {
+          /**
+           * @type {Pick<import('minisearch').Options, 'extractField' | 'tokenize' | 'processTerm'>}
+           */
+          options: {
             miniSearch: {
               options: {
                 // 设置搜索字段和权重
