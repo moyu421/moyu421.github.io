@@ -140,6 +140,67 @@
 }
 
 /**
+ * Component: Archives Page
+ * -------------------------------------------------------------------------- */
+.archives {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.archives h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--vp-c-text-1);
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.post-item {
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: var(--vp-c-bg-soft);
+  transition: all 0.3s ease;
+}
+
+.post-item:hover {
+  background-color: var(--vp-c-bg-alt);
+  transform: translateX(4px);
+}
+
+.post-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-title {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--vp-c-text-1);
+  transition: color 0.3s ease;
+}
+
+.post-title:hover {
+  color: var(--vp-c-brand-1);
+}
+
+.post-date {
+  font-size: 0.875rem;
+  color: var(--vp-c-text-3);
+}
+
+.empty-tip {
+  text-align: center;
+  padding: 3rem;
+  color: var(--vp-c-text-3);
+  font-size: 1.125rem;
+}
+
+/**
  * Component: Custom Block
  * -------------------------------------------------------------------------- */
 
