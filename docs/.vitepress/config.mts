@@ -19,17 +19,7 @@ export default defineConfig({
     ],
 
     // 侧边栏：按博客目录结构分组
-    sidebar: [
-      {
-        text: '文章列表',
-        items: [
-          {text: '示例文章', link: '/posts/markdown-examples'},
-          {text: 'quick-start', link: 'posts/quick-start'}
-          // {text: 'Markdown Examples', link: '/markdown-examples'},
-          // {text: 'Runtime API Examples', link: '/api-examples'}
-        ]
-      }
-    ],
+    sidebar: [],
 
     // 页脚
     footer: {
@@ -62,10 +52,7 @@ export default defineConfig({
     search: {
       provider: 'local',
       options: {
-        async _render(src: any, env: {
-          frontmatter: { search: boolean };
-          relativePath: { startsWith: (arg0: string) => any }
-        }, md: { renderAsync: (arg0: any, arg1: any) => any }) {
+        async _render(src: any, env: any, md: { renderAsync: (arg0: any, arg1: any) => any }) {
           const html = await md.renderAsync(src, env)
           if (env.frontmatter?.search === false) return ''
           if (env.relativePath.startsWith('some/path')) return ''
@@ -100,26 +87,16 @@ export default defineConfig({
           /**
            * @type {Pick<import('minisearch').Options, 'extractField' | 'tokenize' | 'processTerm'>}
            */
-          options: {
-            miniSearch: {
-              options: {
-                // 设置搜索字段和权重
-                fields: ['title', 'text'],
-                boost: {title: 4, text: 2, titles: 1} // 标题权重更高
-              },
-              searchOptions: {
-                fuzzy: 0.2,     // 模糊匹配度 (0.0 - 1.0)
-                prefix: true    // 开启前缀搜索
-              }
-            },
-          },
+          options: {},
           /**
            * @type {import('minisearch').SearchOptions}
            * @default
            * { fuzzy: 0.2, prefix: true, boost: { title: 4, text: 2, titles: 1 } }
            */
           searchOptions: {
-            /* ... */
+            prefix: true,    // 开启前缀搜索
+            fuzzy: 0.2,     // 模糊匹配度 (0.0 - 1.0)
+            boost: {title: 4, text: 2, titles: 1}, // 标题权重更高
           }
         }
       }

@@ -7,7 +7,7 @@ layout: page
 </script>
 
 <div class="archives">
-  <h1>文章归档</h1>
+  <h1>文章列表</h1>
 
   <div class="post-list">
     <div v-for="post of posts" :key="post.url" class="post-item">
