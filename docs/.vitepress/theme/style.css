@@ -127,6 +127,11 @@
   overflow: visible;
 }
 
+.VPHomeHero .name,
+.VPHomeHero .text {
+  max-width: 100% !important;
+}
+
 @media (max-width: 768px) {
   .VPHomeHero .tagline {
     font-size: 14px !important;
