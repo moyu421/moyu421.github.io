@@ -62,6 +62,15 @@ export default defineConfig({
     search: {
       provider: 'local',
       options: {
+        async _render(src: any, env: {
+          frontmatter: { search: boolean };
+          relativePath: { startsWith: (arg0: string) => any }
+        }, md: { renderAsync: (arg0: any, arg1: any) => any }) {
+          const html = await md.renderAsync(src, env)
+          if (env.frontmatter?.search === false) return ''
+          if (env.relativePath.startsWith('some/path')) return ''
+          return html
+        },
         locales: {
           root: {
             translations: {
@@ -103,17 +112,6 @@ export default defineConfig({
                 prefix: true    // 开启前缀搜索
               }
             },
-            async _render(src: any, env: {
-              frontmatter: { search: boolean };
-              relativePath: { startsWith: (arg0: string) => any }
-            }, md: { renderAsync: (arg0: any, arg1: any) => any }) {
-              const html = await md.renderAsync(src, env)
-              // 排除 frontmatter 中设置了 search: false 的页面
-              if (env.frontmatter?.search === false) return ''
-              // 排除某个特定目录下的所有页面
-              if (env.relativePath.startsWith('private/')) return ''
-              return html
-            }
           },
           /**
            * @type {import('minisearch').SearchOptions}
