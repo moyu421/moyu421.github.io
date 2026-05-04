@@ -3,7 +3,7 @@ title: 文章归档
 layout: page
 ---
 
-<script setup>import { data as posts } from './content-loader'
+<script setup>import { data as posts } from './posts.data.ts'
 </script>
 
 <div class="archives">
