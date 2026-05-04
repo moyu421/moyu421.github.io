@@ -187,8 +187,3 @@ docker ps
 | 官方文档       | https://docs.docker.com/engine/install/ubuntu/ |
 | Docker Hub | https://hub.docker.com/                        |
 | 数据目录       | `/var/lib/docker/`                             |
-
----
-
-**文档版本：** 1.1
-**更新日期：** 2026-04-08
