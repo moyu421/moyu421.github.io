@@ -19,7 +19,7 @@ export default defineConfig({
     ],
 
     // 侧边栏：按博客目录结构分组
-    sidebar: [],
+    // sidebar: [],
 
     // 页脚
     footer: {
