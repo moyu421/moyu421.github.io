@@ -58,6 +58,7 @@ export default defineConfig({
       {icon: 'github', link: 'https://github.com/moyu421/moyu421.github.io'}
     ],
 
+    // 搜索栏
     search: {
       provider: 'local',
       options: {
@@ -69,12 +70,18 @@ export default defineConfig({
                 buttonAriaLabel: '搜索'
               },
               modal: {
-                noResultsText: '无法找到相关结果',
+                displayDetails: '显示详细列表',
                 resetButtonTitle: '清除搜索条件',
+                backButtonTitle: '关闭搜索',
+                noResultsText: '无法找到相关结果',
                 footer: {
                   selectText: '选择',
+                  closeText: '关闭',
+                  selectKeyAriaLabel: '输入',
                   navigateText: '切换',
-                  closeText: '关闭'
+                  navigateUpKeyAriaLabel: '上箭头',
+                  navigateDownKeyAriaLabel: '下箭头',
+                  closeKeyAriaLabel: 'Esc'
                 }
               }
             },
